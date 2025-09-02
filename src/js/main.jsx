@@ -1,18 +1,38 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
+import React, { useState } from "react";
+import ReactDOM from "react-dom/client";
+import "../styles/index.css";
 
-//Bootstrap
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap"
+function TrafficLight() {
+  const [color, setColor] = useState("red");
+  const [hasPurple, setHasPurple] = useState(false);
 
-// index.css'
-import '../styles/index.css'
+  const colors = ["red", "yellow", "green", ...(hasPurple ? ["purple"] : [])];
 
-// components
-import Home from './components/Home';
+  // Cambia al siguiente color de la lista
+  const handleNextColor = () => {
+    const currentIndex = colors.indexOf(color);
+    const nextIndex = (currentIndex + 1) % colors.length;
+    setColor(colors[nextIndex]);
+  };
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <Home/>
-  </React.StrictMode>,
-)
+  return (
+    <div className="traffic-container">
+      <div className="traffic-light">
+        {colors.map((c) => (
+          <div
+            key={c}
+            className={`light ${c} ${color === c ? "active" : ""}`}
+            onClick={() => setColor(c)}
+          ></div>
+        ))}
+      </div>
+      <div className="controls">
+        <button onClick={handleNextColor}>Cambiar color</button>
+        <button onClick={() => setHasPurple(true)}>Añadir púrpura</button>
+      </div>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.querySelector("#root"));
+root.render(<TrafficLight />);
