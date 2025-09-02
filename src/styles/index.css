@@ -1,11 +1,81 @@
-/* 
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f2f2f2;
+}
 
-    You can write your own styles here...
-    
-    
-    ...Or you can use the import command to include 
-    other sylesheets into your bunde as well, e.j:
-    
-    import 'relative/path/to/stylesheet.scss';
+.traffic-container {
+    text-align: center;
+}
 
-*/
+.traffic-light {
+    width: 100px;
+    background: black;
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.light {
+    width: 60px;
+    height: 60px;
+    margin: 10px auto;
+    border-radius: 50%;
+    background: #333;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease, background 0.3s ease;
+}
+
+.light.red { 
+    background: darkred; 
+}
+
+.light.yellow { 
+    background: goldenrod; 
+}
+
+.light.green { 
+    background: darkgreen; 
+}
+
+.light.purple { 
+    background: indigo; 
+}
+
+.light.active.red { 
+    background: red; 
+    box-shadow: 0 0 20px 5px red; 
+}
+
+.light.active.yellow { 
+    background: yellow; 
+    box-shadow: 0 0 20px 5px yellow; 
+}
+
+.light.active.green { 
+    background: limegreen; 
+    box-shadow: 0 0 20px 5px limegreen; 
+}
+
+.light.active.purple { 
+    background: violet; 
+    box-shadow: 0 0 20px 5px violet; 
+}
+
+button {
+    margin: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    background: #333;
+    color: white;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #555;
+}
